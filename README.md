@@ -4,6 +4,7 @@
 - [ ] ToC on each page
 - [ ] Fix image links
 - [ ] Dark mode
+- [ ] Optima webfont
 
 # Astro Starter Kit: Basics
 
