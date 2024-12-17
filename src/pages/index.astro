@@ -1,11 +1,44 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { posts } from "../content/posts";
+import dayjs, { Dayjs } from "dayjs";
+import classNames from "classnames";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const p = posts.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const thisYear = new Date().getFullYear();
+function formatDate(date: Dayjs) {
+  const year = date.get("year");
+  if (year === thisYear) return date.format("MMM D");
+  return date.format("YYYY-MM-DD");
+}
+
+const lastPostOfYearIndices = p.reduce((acc, post, i) => {
+  if (i === 0) return acc;
+  const prevPost = p[i - 1];
+  if (post.date.year() !== prevPost.date.year()) {
+    return [...acc, i - 1];
+  }
+  return acc;
+}, [] as number[]);
 ---
 
 <Layout>
-	<Welcome />
+  <section class="my-4">
+    <ul>
+      {
+        p.map((post, i) => (
+          <li
+            class={classNames("flex", "justify-between", "gap-4", "my-1", {
+              "mb-4": lastPostOfYearIndices.includes(i),
+            })}>
+            <a href={post.slug}>
+              <h1>{post.title}</h1>
+            </a>
+            <p>{formatDate(post.date)}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </Layout>

@@ -1,0 +1,51 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../layouts/Layout.astro";
+import { posts } from "../content/posts";
+import dayjs from "dayjs";
+import classNames from "classnames";
+
+const { slug } = Astro.params;
+
+export const getStaticPaths = (() =>
+  posts.map((post) => ({
+    params: { slug: post.slug },
+  }))) satisfies GetStaticPaths;
+
+const post = posts.find((post) => post.slug === slug);
+if (!post) throw new Error(`Post not found for slug: ${slug}`);
+
+const cn = classNames(
+  "max-w-none",
+  "prose",
+  "prose-lg",
+
+  "prose-li:my-0",
+  "prose-ul:my-0",
+  "prose-p:my-4",
+  "prose-h1:my-4",
+  "prose-h2:my-4",
+  "prose-h3:my-4",
+  "prose-h4:my-4",
+  "prose-h5:my-4",
+  "prose-h6:my-4",
+  "prose-pre:my-4",
+
+  "prose-h1:text-3xl",
+  "prose-h2:text-2xl",
+  "prose-h3:text-xl",
+  "prose-h4:text-lg",
+  "prose-h5:text-lg",
+  "prose-h6:text-lg"
+);
+---
+
+<Layout>
+  <article>
+    <h1 class="text-3xl">{post.title}</h1>
+    <p class="mb-4">{post.date.format("dddd, MMMM D, YYYY")}</p>
+    <div class={cn}>
+      <Fragment set:html={post.content} />
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,34 @@
+@import ("./fonts.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    @apply font-serif font-normal text-lg;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-handwritten;
+  }
+
+  header,
+  footer {
+    @apply font-bold;
+  }
+
+  /* p,
+  ul {
+    @apply mb-4;
+  }
+
+  ul {
+    @apply list-disc ml-4;
+  } */
+}
