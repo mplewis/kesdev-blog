@@ -1,22 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { posts } from "../content/posts";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import classNames from "classnames";
+import { getCollection } from "astro:content";
+import type { Post } from "../content.config";
 
-const p = posts.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+const posts = (await getCollection("posts")) as Post[];
+
+const p = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const thisYear = new Date().getFullYear();
-function formatDate(date: Dayjs) {
-  const year = date.get("year");
-  if (year === thisYear) return date.format("MMM D");
-  return date.format("YYYY-MM-DD");
+function formatDate(date: Date) {
+  if (date.getFullYear() === thisYear) return dayjs(date).format("MMM D");
+  return dayjs(date).format("YYYY-MM-DD");
 }
 
 const lastPostOfYearIndices = p.reduce((acc, post, i) => {
   if (i === 0) return acc;
   const prevPost = p[i - 1];
-  if (post.date.year() !== prevPost.date.year()) {
+  if (dayjs(post.data.date).year() !== dayjs(prevPost.data.date).year()) {
     return [...acc, i - 1];
   }
   return acc;
@@ -32,10 +34,10 @@ const lastPostOfYearIndices = p.reduce((acc, post, i) => {
             class={classNames("flex", "justify-between", "gap-4", "my-1", {
               "mb-4": lastPostOfYearIndices.includes(i),
             })}>
-            <a href={post.slug}>
-              <h1>{post.title}</h1>
+            <a href={post.data.slug}>
+              <h1>{post.data.title}</h1>
             </a>
-            <p>{formatDate(post.date)}</p>
+            <p>{formatDate(post.data.date)}</p>
           </li>
         ))
       }

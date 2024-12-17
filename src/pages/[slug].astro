@@ -1,19 +1,23 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { posts } from "../content/posts";
-import dayjs from "dayjs";
 import classNames from "classnames";
+import { getCollection } from "astro:content";
+import type { Post } from "../content.config";
+import dayjs from "dayjs";
+import { render } from "astro:content";
 
-const { slug } = Astro.params;
-
-export const getStaticPaths = (() =>
-  posts.map((post) => ({
-    params: { slug: post.slug },
-  }))) satisfies GetStaticPaths;
-
-const post = posts.find((post) => post.slug === slug);
-if (!post) throw new Error(`Post not found for slug: ${slug}`);
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+const { post } = Astro.props;
+const { html } = post.rendered ?? {};
+if (!html) throw new Error(`No rendered HTML for ${post.data.slug}`);
 
 const cn = classNames(
   "max-w-none",
@@ -42,10 +46,10 @@ const cn = classNames(
 
 <Layout>
   <article>
-    <h1 class="text-3xl">{post.title}</h1>
-    <p class="mb-4">{post.date.format("dddd, MMMM D, YYYY")}</p>
+    <h1 class="text-3xl">{post.data.title}</h1>
+    <p class="mb-4">{dayjs(post.data.date).format("dddd, MMMM D, YYYY")}</p>
     <div class={cn}>
-      <Fragment set:html={post.content} />
+      <Fragment set:html={html} />
     </div>
   </article>
 </Layout>
