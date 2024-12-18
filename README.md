@@ -1,7 +1,9 @@
 # TODO
 
 - [ ] ToC on each page
-- [ ] Fix image links
+- [ ] RSS
+- [ ] Open Graph
+- [x] Fix image links
 - [x] Dark mode
 - [x] Color theme
 - [x] Optima webfont
