@@ -3,6 +3,7 @@ title: An Opinionated Guide to Fixie Commuters
 slug: an-opinionated-guide-to-fixie-commuters
 date: 2016-11-04T04:52:03.000Z
 ---
+
 <!--kg-card-begin: markdown--><p>Two months ago, I picked up a basic little road bike and turned it into a fixie commuter.</p>
 <h1 id="whatssogreataboutafixie">What's so great about a fixie?</h1>
 <h2 id="theyresimple">They're simple</h2>
@@ -28,7 +29,7 @@ date: 2016-11-04T04:52:03.000Z
 <p>The easiest way to start riding a fixie is to buy an already-built fixie. The second easiest way is to buy a cheap vintage road bike and take off most of the parts.</p>
 <p>You'll be looking for a bike with horizontal or mostly-horizontal dropouts. That's because you're removing the derailleur, which tensions the chain, so the only way to tension the chain is to move the rear wheel forward and back in the frame.</p>
 <p>Here are the types of dropouts that will work and won't work to tension your chain:</p>
-<p><a href="http://www.sheldonbrown.com/gloss_dr-z.html#dropout"><img src="__GHOST_URL__/content/images/2018/07/Sheldon_Brown_s_Bicycle_Glossary_Dr_-_z.png" alt="Types of Dropouts" loading="lazy"> From Sheldon Brown's site</a></p>
+<p><a href="http://www.sheldonbrown.com/gloss_dr-z.html#dropout"><img src="/ghost-images/content/images/2018/07/Sheldon_Brown_s_Bicycle_Glossary_Dr_-_z.png" alt="Types of Dropouts" loading="lazy"> From Sheldon Brown's site</a></p>
 <h2 id="stripthenotfixieparts">Strip the not-fixie parts</h2>
 <p>There are a lot of parts to strip! You'll need to remove these:</p>
 <ul>
@@ -69,14 +70,14 @@ date: 2016-11-04T04:52:03.000Z
 <p>To find a tire that's best for you, check out <a href="https://www.bicyclerollingresistance.com/road-bike-reviews">Rolling Resistance reviews</a>. They cover all the tradeoffs of every road bike tire you should consider.</p>
 <h2 id="replacetheancientbrakeleversandbartape">Replace the ancient brake levers and bar tape</h2>
 <p>Vintage brake levers and cables look like this:</p>
-<p><a href="https://www.bikeforums.net/classic-vintage/681558-non-aero-cable-routing-question.html"><img src="__GHOST_URL__/content/images/2018/07/routing-vintage.jpg" alt="Vintage cable routing" loading="lazy"></a></p>
+<p><a href="https://www.bikeforums.net/classic-vintage/681558-non-aero-cable-routing-question.html"><img src="/ghost-images/content/images/2018/07/routing-vintage.jpg" alt="Vintage cable routing" loading="lazy"></a></p>
 <p>If your bike comes with these, they are probably original and they probably really suck at translating hand pull into braking action. And if you're like me, you want to minimize the exposed cables on your clean frame.</p>
 <p>I like it when my cables pop out from under the bar tape:</p>
-<p><a href="http://www.velominati.com/2013/09/la-vie-velominatus-cable-obsession/"><img src="__GHOST_URL__/content/images/2018/07/modern-routing.jpg" alt="Modern cable routing" loading="lazy"></a></p>
+<p><a href="http://www.velominati.com/2013/09/la-vie-velominatus-cable-obsession/"><img src="/ghost-images/content/images/2018/07/modern-routing.jpg" alt="Modern cable routing" loading="lazy"></a></p>
 <p>Consider buying <a href="https://smile.amazon.com/Tektro-RL340-Brake-Levers-Black/dp/B003U9ROKC/">road bike brake levers</a> so you can safely ride <a href="http://lovelybike.blogspot.com/2012/06/drop-bar-hand-positions-introduction.html">on the hoods</a>, and <a href="https://smile.amazon.com/gp/product/B001JI8SKG/">a crosstop lever</a> if you ride on the tops a lot.</p>
 <p>Once you have those, you need to <a href="https://www.youtube.com/watch?v=geSok-YQN-U">install the levers</a>, then <a href="https://www.youtube.com/watch?v=5MzIiv7pewE">wrap the bars over the brake cables.</a> Although it can be nervewracking, this is actually a lot of fun. Find a color you like at your LBS or online and buy twice as many rolls as you need. That way, if you screw up, you can just try again.</p>
 <h2 id="retentyofoots">Retent yo foots</h2>
-<p><a href="https://www.iamlivingit.com/cycling/clipless-pedals"><img src="__GHOST_URL__/content/images/2018/07/clipless-bike-pedal1504783675.jpg" alt="clipless-bike-pedal1504783675" loading="lazy"> From <em>Cycling Basics: How to Cycle with Clipless Pedals</em></a></p>
+<p><a href="https://www.iamlivingit.com/cycling/clipless-pedals"><img src="/ghost-images/content/images/2018/07/clipless-bike-pedal1504783675.jpg" alt="clipless-bike-pedal1504783675" loading="lazy"> From <em>Cycling Basics: How to Cycle with Clipless Pedals</em></a></p>
 <p>Foot retention does two important things:</p>
 <p><strong>Keeps your feet glued to the pedals.</strong> You can't coast on a fixie. Your pedals move when your wheels do. If your feet slip off the pedals while you're moving fast, it will be really hard to get your feet back onto the pedals. That's a recipe for a crash.</p>
 <p><strong>Lets you pull up for more power.</strong> You only have one gear now – time to make it count. When your feet are bound to the pedals, you can pull up with one foot while you press down with the other. This lets you apply more force and means you don't need a higher gear as much.</p>
