@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 import type { Post } from "../content.config";
+import { excerpt } from "../logic/excerpt";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
@@ -44,7 +45,7 @@ const cn = classNames(
 );
 ---
 
-<Layout>
+<Layout title={post.data.title} desc={excerpt(html)}>
   <article>
     <div class="text-center my-12">
       <h1 class="text-3xl">{post.data.title}</h1>

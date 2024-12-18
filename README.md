@@ -1,7 +1,7 @@
 # TODO
 
 - [ ] ToC on each page
-- [ ] Open Graph
+- [x] Open Graph
 - [x] RSS
 - [x] Fix image links
 - [x] Dark mode

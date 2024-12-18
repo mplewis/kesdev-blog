@@ -4,6 +4,13 @@ import Footer from "../components/Footer.astro";
 
 import "../styles/base.css";
 import "../styles/fonts.css";
+
+const siteName = "Kestrel Development";
+const siteDesc = "Make. Break. Repeat.";
+
+const { title, desc } = Astro.props;
+let t = title ? `${title} | ${siteName}` : siteName;
+let d = desc ?? siteDesc;
 ---
 
 <!doctype html>
@@ -12,6 +19,8 @@ import "../styles/fonts.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={t} />
+    <meta property="og:description" content={d} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,7 +28,7 @@ import "../styles/fonts.css";
       href="https://fonts.googleapis.com/css2?family=Sriracha&family=Taviraj:wght@300;500&display=swap"
       rel="stylesheet"
     />
-    <title>Kestrel Development</title>
+    <title>{t}</title>
   </head>
   <body>
     <div class="container mx-auto my-4 px-4 max-w-screen-md">

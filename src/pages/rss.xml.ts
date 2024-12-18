@@ -2,15 +2,7 @@ import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 import type { Post } from "../content.config";
-import sanitize from "sanitize-html";
-
-const EXCERPT_CHARS = 200;
-
-function excerpt(html: string) {
-  const text = sanitize(html, { allowedTags: [] });
-  if (text.length <= EXCERPT_CHARS) return text;
-  return text.slice(0, EXCERPT_CHARS) + "…";
-}
+import { excerpt } from "../logic/excerpt";
 
 export async function GET(context: APIContext) {
   if (!context.site) throw new Error("site is undefined");
