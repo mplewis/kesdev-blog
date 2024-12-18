@@ -14,7 +14,7 @@
   h4,
   h5,
   h6 {
-    @apply font-handwritten;
+    @apply font-handwritten dark:text-white;
   }
 
   a {
