@@ -2,7 +2,7 @@
 
 - [ ] ToC on each page
 - [ ] Fix image links
-- [ ] Dark mode
+- [x] Dark mode
 - [x] Color theme
 - [x] Optima webfont
 
