@@ -4,15 +4,17 @@ import Layout from "../layouts/Layout.astro";
 import classNames from "classnames";
 import { getCollection } from "astro:content";
 import dayjs from "dayjs";
+import type { Post } from "../content.config";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
-  return posts.map((post) => ({
+  return posts.map((post: Post) => ({
     params: { slug: post.data.slug },
     props: { post },
   }));
 }) satisfies GetStaticPaths;
-const { post } = Astro.props;
+
+const post: Post = Astro.props["post"]; // HACK: tsc doesn't like this
 const { html } = post.rendered ?? {};
 if (!html) throw new Error(`No rendered HTML for ${post.data.slug}`);
 
@@ -44,12 +46,17 @@ const cn = classNames(
 
 <Layout>
   <article>
-    <div class="text-center">
+    <div class="text-center my-12">
       <h1 class="text-3xl">{post.data.title}</h1>
       <p class="mb-4">{dayjs(post.data.date).format("dddd, MMMM D, YYYY")}</p>
     </div>
     <div class={cn}>
       <Fragment set:html={html} />
     </div>
+
+    <p class="italic my-12 text-center">
+      I'd love to hear what you think about this post.
+      <a href="mailto:matt@mplewis.com" class="underline">Email me!</a>
+    </p>
   </article>
 </Layout>
