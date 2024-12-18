@@ -5,6 +5,7 @@ export default {
     fontFamily: {
       serif: ["Optima", "serif"],
       handwritten: ["Sriracha", "sans-serif"],
+      mono: ["Fantasque Sans Mono", "monospace"],
     },
     fontWeight: {
       normal: 300,
