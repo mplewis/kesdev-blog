@@ -8,14 +8,19 @@ import type { Post } from "../content.config";
 import { excerpt } from "../logic/excerpt";
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection("posts");
-  return posts.map((post: Post) => ({
-    params: { slug: post.data.slug },
-    props: { post },
-  }));
+  return (await getCollection("posts"))
+    .map((post) => {
+      if (!post.rendered)
+        throw new Error(`No rendered HTML for ${post.data.slug}`);
+      return { ...post, rendered: post.rendered };
+    })
+    .map((post) => ({
+      params: { slug: post.data.slug },
+      props: { post },
+    }));
 }) satisfies GetStaticPaths;
 
-const post: Post = Astro.props["post"]; // HACK: tsc doesn't like this
+const { post } = Astro.props;
 const { html } = post.rendered ?? {};
 if (!html) throw new Error(`No rendered HTML for ${post.data.slug}`);
 
