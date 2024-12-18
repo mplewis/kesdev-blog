@@ -34,9 +34,9 @@ const lastPostOfYearIndices = p.reduce((acc, post, i) => {
             class={classNames("flex", "justify-between", "gap-4", "my-1", {
               "mb-4": lastPostOfYearIndices.includes(i),
             })}>
-            <a href={post.data.slug}>
-              <h1>{post.data.title}</h1>
-            </a>
+            <h1>
+              <a href={post.data.slug}>{post.data.title}</a>
+            </h1>
             <p>{formatDate(post.data.date)}</p>
           </li>
         ))
