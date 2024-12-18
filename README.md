@@ -1,10 +1,10 @@
 # TODO
 
-- [ ] Color theme
 - [ ] ToC on each page
 - [ ] Fix image links
 - [ ] Dark mode
-- [ ] Optima webfont
+- [x] Color theme
+- [x] Optima webfont
 
 # Astro Starter Kit: Basics
 

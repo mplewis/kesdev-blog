@@ -1,12 +1,9 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import classNames from "classnames";
 import { getCollection } from "astro:content";
-import type { Post } from "../content.config";
 import dayjs from "dayjs";
-import { render } from "astro:content";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
@@ -46,8 +43,10 @@ const cn = classNames(
 
 <Layout>
   <article>
-    <h1 class="text-3xl">{post.data.title}</h1>
-    <p class="mb-4">{dayjs(post.data.date).format("dddd, MMMM D, YYYY")}</p>
+    <div class="text-center">
+      <h1 class="text-3xl">{post.data.title}</h1>
+      <p class="mb-4">{dayjs(post.data.date).format("dddd, MMMM D, YYYY")}</p>
+    </div>
     <div class={cn}>
       <Fragment set:html={html} />
     </div>
