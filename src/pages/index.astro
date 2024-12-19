@@ -15,29 +15,46 @@ function formatDate(date: Date) {
   return dayjs(date).format("YYYY-MM-DD");
 }
 
-const lastPostOfYearIndices = p.reduce((acc, post, i) => {
-  if (i === 0) return acc;
-  const prevPost = p[i - 1];
-  if (dayjs(post.data.date).year() !== dayjs(prevPost.data.date).year()) {
-    return [...acc, i - 1];
-  }
-  return acc;
-}, [] as number[]);
+const { first, last } = p.reduce(
+  (acc, post, i) => {
+    if (i === 0) return { first: [i], last: [] };
+    const prevPost = p[i - 1];
+    if (dayjs(post.data.date).year() !== dayjs(prevPost.data.date).year()) {
+      return {
+        first: [...acc.first, i],
+        last: [...acc.last, i - 1],
+      };
+    }
+    return acc;
+  },
+  { first: [], last: [] } as { first: number[]; last: number[] }
+);
 ---
 
 <Layout>
-  <section class="my-4">
+  <section>
     <ul>
       {
         p.map((post, i) => (
-          <li
-            class={classNames("flex", "justify-between", "gap-4", "my-1", {
-              "mb-4": lastPostOfYearIndices.includes(i),
-            })}>
-            <h1>
-              <a href={post.data.slug}>{post.data.title}</a>
-            </h1>
-            <p>{formatDate(post.data.date)}</p>
+          <li>
+            {first.includes(i) && (
+              <p
+                class={classNames("pt-3", {
+                  "border-t-2": i !== 0,
+                  "border-t-zinc-700": i !== 0,
+                })}>
+                {dayjs(post.data.date).year()}
+              </p>
+            )}
+            <div
+              class={classNames("flex", "justify-between", "gap-4", "my-1", {
+                "mb-3": last.includes(i),
+              })}>
+              <h1>
+                <a href={post.data.slug}>{post.data.title}</a>
+              </h1>
+              <p class="shrink-0">{dayjs(post.data.date).format("MMM D")}</p>
+            </div>
           </li>
         ))
       }
