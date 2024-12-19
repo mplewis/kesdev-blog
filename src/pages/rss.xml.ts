@@ -1,7 +1,6 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
-import type { Post } from "../content.config";
 import { excerpt } from "../logic/excerpt";
 
 export async function GET(context: APIContext) {
@@ -14,12 +13,13 @@ export async function GET(context: APIContext) {
     description: "Make. Break. Repeat.",
     customData: `<language>en-us</language>`,
     items: posts
-      .sort((a: Post, b: Post) => b.data.date.getTime() - a.data.date.getTime())
-      .map((post: Post) => ({
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+      .map((post) => ({
         title: post.data.title,
         link: `${context.site}${post.data.slug}`,
-        description: excerpt(post.rendered.html),
         pubDate: post.data.date,
+        description: excerpt(post.rendered!.html), // HACK
+        content: post.rendered!.html,
       })),
   });
 }
