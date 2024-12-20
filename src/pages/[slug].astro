@@ -5,23 +5,18 @@ import classNames from "classnames";
 import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 import { excerpt } from "../logic/excerpt";
+import { render } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  return (await getCollection("posts"))
-    .map((post) => {
-      if (!post.rendered)
-        throw new Error(`No rendered HTML for ${post.data.slug}`);
-      return { ...post, rendered: post.rendered };
-    })
-    .map((post) => ({
-      params: { slug: post.data.slug },
-      props: { post },
-    }));
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
-const { html } = post.rendered ?? {};
-if (!html) throw new Error(`No rendered HTML for ${post.data.slug}`);
+const { Content } = await render(post);
 
 const cn = classNames(
   "max-w-none",
@@ -56,14 +51,16 @@ const cn = classNames(
 );
 ---
 
-<Layout title={post.data.title} desc={excerpt(html)}>
+<Layout
+  title={post.data.title}
+  desc={excerpt(post.rendered?.html ?? "No preview available.")}>
   <article>
     <div class="text-center my-12">
       <h1 class="text-3xl">{post.data.title}</h1>
       <p class="mb-4">{dayjs(post.data.date).format("dddd, MMMM D, YYYY")}</p>
     </div>
     <div class={cn}>
-      <Fragment set:html={html} />
+      <Content />
     </div>
 
     <p class="italic my-12 text-center">
