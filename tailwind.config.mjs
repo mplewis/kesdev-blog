@@ -8,8 +8,8 @@ export default {
       mono: ["Fantasque Sans Mono", "monospace"],
     },
     fontWeight: {
-      normal: 300,
-      bold: 500,
+      normal: 400,
+      bold: 700,
     },
   },
   plugins: [require("@tailwindcss/typography")],
