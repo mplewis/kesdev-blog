@@ -41,7 +41,7 @@ The Bluesky team has some
 [documentation](https://docs.bsky.app/docs/tutorials/creating-a-post#images-embeds)
 on posting with images, but these docs use Python and are not terribly complete,
 so I wanted to share my complete and working example of the
-[Node.js TypeScript code](https://github.com/mplewis/photolog/blob/9b2fac8c90c66a04e07b98e173f6190197dba35c/src/netlify/functions/index.mts#L102-L128)
+[Node.js TypeScript code](https://github.com/mplewis/photolog/blob/60e6bf5b2de74da514b29f3efbe9469d97c5fe42/src/netlify/functions/index.mts#L103-L129)
 I use to post to Bluesky.
 
 Here are the steps from the above code described in detail:
